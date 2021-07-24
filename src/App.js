@@ -32,7 +32,13 @@ function App() {
     for (let red = 0; red < colors.length; red++) {
       for (let green = 0; green < colors.length; green++) {
         for (let blue = 0; blue < colors.length; blue++) {
-          colorArr.push(`${colors[red]}, ${colors[green]}, ${colors[blue]}`);
+          const color = `${colors[red]}, ${colors[green]}, ${colors[blue]}`;
+          if (colorArr.length > 0) {
+            const randomNumber = Math.floor(Math.random() * colorArr.length);
+            colorArr.splice(randomNumber, 0, color);
+          } else {
+            colorArr.push(color);
+          }
         }
       }
     }
@@ -48,7 +54,7 @@ function App() {
       {showColorImg ? (
         <>{colorImg}</>
       ) : (
-        <div className="colorImg unclick"> Click button to generate image</div>
+        <div className="colorImg unclick">Click button to generate image</div>
       )}
     </div>
   );
